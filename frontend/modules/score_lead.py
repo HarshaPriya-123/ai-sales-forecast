@@ -6,7 +6,7 @@ import streamlit as st
 from database import get_all_leads
 from modules.gauge import render_score_gauge
 
-API_BASE = "http://127.0.0.1:8000"
+API_BASE = "https://ai-sales-forecast-6jp0.onrender.com"
 
 
 # ----------------------------------------------------------------------
