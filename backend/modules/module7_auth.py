@@ -352,13 +352,8 @@ def forgot_password(payload: ForgotPasswordRequest, db: Session = Depends(get_db
 
     try:
         send_reset_email(user.email, raw_token)
-    except Exception:
-        # Email sending failed (bad SMTP config, network issue, etc).
-        # The token still exists in the database and remains valid until
-        # it expires, so this is safe to fail silently to the caller —
-        # revealing SMTP errors here would leak infrastructure details
-        # and could also confirm account existence.
-        pass
+    except Exception as e:
+        print(f"EMAIL SEND FAILED: {e}")
 
     return _GENERIC_FORGOT_PASSWORD_RESPONSE
 
