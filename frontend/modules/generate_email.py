@@ -7,7 +7,7 @@ import streamlit.components.v1 as components
 import requests
 from database import get_all_leads, get_lead_details
 
-API_BASE = "http://127.0.0.1:8000"
+API_BASE = "https://ai-sales-forecast-6jp0.onrender.com"
 
 EMAIL_TYPE_OPTIONS = {
     "Cold email": "cold_email",
