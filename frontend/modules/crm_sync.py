@@ -12,7 +12,7 @@ STATUS_BADGE = {
 
 
 def _sync_lead(lead_id):
-    response = requests.post(f"{API_BASE}/crm/sync/{lead_id}", timeout=15)
+    response = requests.post(f"{API_BASE}/crm/sync/{lead_id}", timeout=60)
     if response.status_code != 200:
         try:
             detail = response.json().get("detail", response.text)
@@ -23,7 +23,7 @@ def _sync_lead(lead_id):
 
 
 def _get_sync_logs(lead_id):
-    response = requests.get(f"{API_BASE}/crm/{lead_id}", timeout=15)
+    response = requests.get(f"{API_BASE}/crm/{lead_id}", timeout=60)
     if response.status_code != 200:
         raise Exception("Could not load CRM sync history.")
     return response.json()
