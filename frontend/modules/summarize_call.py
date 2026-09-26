@@ -6,7 +6,7 @@ API_BASE = "https://ai-sales-forecast-6jp0.onrender.com"
 
 
 def _generate_summary(lead_id):
-    response = requests.post(f"{API_BASE}/summary/generate/{lead_id}", timeout=30)
+    response = requests.post(f"{API_BASE}/summary/generate/{lead_id}", timeout=60)
     if response.status_code != 200:
         try:
             detail = response.json().get("detail", response.text)
@@ -17,7 +17,7 @@ def _generate_summary(lead_id):
 
 
 def _get_summaries(lead_id):
-    response = requests.get(f"{API_BASE}/summary/{lead_id}", timeout=15)
+    response = requests.get(f"{API_BASE}/summary/{lead_id}", timeout=60)
     if response.status_code != 200:
         raise Exception("Could not load meeting summaries.")
     return response.json()
