@@ -84,7 +84,7 @@ def create_user(username, email, password, confirm_password):
         response = requests.post(
             f"{API_BASE}/auth/signup",
             json={"username": username, "email": email, "password": password},
-            timeout=10,
+            timeout=60,
         )
     except requests.exceptions.ConnectionError:
         return False, (
@@ -114,7 +114,7 @@ def authenticate_user(identifier, password):
         response = requests.post(
             f"{API_BASE}/auth/login",
             json={"identifier": identifier, "password": password},
-            timeout=10,
+            timeout=60,
         )
     except requests.exceptions.ConnectionError:
         return False, None, (
@@ -151,7 +151,7 @@ def request_password_reset(email):
         response = requests.post(
             f"{API_BASE}/auth/forgot-password",
             json={"email": email},
-            timeout=10,
+            timeout=60,
         )
     except requests.exceptions.ConnectionError:
         return False, (
@@ -198,7 +198,7 @@ def reset_password_with_token(token, new_password, confirm_password):
         response = requests.post(
             f"{API_BASE}/auth/reset-password",
             json={"token": token, "new_password": new_password},
-            timeout=10,
+            timeout=60,
         )
     except requests.exceptions.ConnectionError:
         return False, (
