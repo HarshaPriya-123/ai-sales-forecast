@@ -1,6 +1,6 @@
 import requests
 
-API_BASE = "http://127.0.0.1:8000"
+API_BASE = "https://ai-sales-forecast-6jp0.onrender.com"
 
 
 def _raise_with_detail(response):
