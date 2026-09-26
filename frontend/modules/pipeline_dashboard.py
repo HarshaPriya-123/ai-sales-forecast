@@ -9,7 +9,7 @@ PIPELINE_STAGES = ["New", "Contacted", "Qualified", "Warm", "Hot", "Cold"]
 
 
 def _fetch_summary():
-    response = requests.get(f"{API_BASE}/dashboard/summary", timeout=15)
+    response = requests.get(f"{API_BASE}/dashboard/summary", timeout=60)
     response.raise_for_status()
     return response.json()
 
