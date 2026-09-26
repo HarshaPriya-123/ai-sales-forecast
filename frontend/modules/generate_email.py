@@ -99,7 +99,7 @@ def _generate_email(
     response = requests.post(
         f"{API_BASE}/email/generate/{lead_id}",
         json=payload or None,
-        timeout=30,
+        timeout=60,
     )
     if response.status_code != 200:
         try:
@@ -114,7 +114,7 @@ def _save_edits(campaign_id, subject, body):
     response = requests.put(
         f"{API_BASE}/email/edit/{campaign_id}",
         json={"email_subject": subject, "email_body": body},
-        timeout=15,
+        timeout=60,
     )
     if response.status_code != 200:
         raise Exception("Could not save your edits.")
@@ -122,7 +122,7 @@ def _save_edits(campaign_id, subject, body):
 
 
 def _mark_sent(campaign_id):
-    response = requests.put(f"{API_BASE}/email/send/{campaign_id}", timeout=15)
+    response = requests.put(f"{API_BASE}/email/send/{campaign_id}", timeout=60)
     if response.status_code != 200:
         raise Exception("Could not mark this email as sent.")
     return response.json()
